@@ -3148,7 +3148,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 		buf = cout.rdbuf();
 
 	ostream out(buf);
-	out << "CHROM\tPOS\tWEIR_AND_COCKERHAM_FST" << endl;
+	out << "CHROM\tPOS\tWEIR_AND_COCKERHAM_FST\tcomp1\tcomp2\tcomp3" << endl;
 
 	entry *e = get_entry_object();
 	vector<char> variant_line;
@@ -3253,7 +3253,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 			sum3 += fst;
 			count++;
 		}
-		out << e->get_CHROM() << "\t" << e->get_POS() << "\t" << fst << endl;
+		out << e->get_CHROM() << "\t" << e->get_POS() << "\t" << fst << "\t" << sum1 << "\t" << sum2 << "\t" << sum3 << endl;
 	}
 
 	double weighted_Fst = sum1 / sum2;
@@ -3473,7 +3473,7 @@ void variant_file::output_windowed_weir_and_cockerham_fst(const parameters &para
 		buf = cout.rdbuf();
 
 	ostream out(buf);
-	out << "CHROM\tBIN_START\tBIN_END\tN_VARIANTS\tWEIGHTED_FST\tMEAN_FST" << endl;
+	out << "CHROM\tBIN_START\tBIN_END\tN_VARIANTS\tWEIGHTED_FST\tMEAN_FST\tsum1\tsum2\tsum3" << endl;
 	for (unsigned int ui=0; ui<chrs.size(); ui++)
 	{
 		CHROM = chrs[ui];
@@ -3488,7 +3488,9 @@ void variant_file::output_windowed_weir_and_cockerham_fst(const parameters &para
 				<< s*fst_window_step + 1 << "\t"
 				<< (s*fst_window_step + fst_window_size) << "\t"
 				<< bins[CHROM][s][3] << "\t"
-				<< weighted_Fst << "\t" << mean_Fst << endl;
+				<< weighted_Fst << "\t" << mean_Fst <<  "\t"
+                << sum1 << "\t" << sum2 << "\t" << sum3 <<
+                endl;
 			}
 		}
 	}

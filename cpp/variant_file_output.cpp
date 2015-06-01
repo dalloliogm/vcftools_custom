@@ -3148,7 +3148,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 		buf = cout.rdbuf();
 
 	ostream out(buf);
-	out << "CHROM\tPOS\tWEIR_AND_COCKERHAM_FST\tFstNum\tFstDenom" << endl;
+	out << "CHROM\tPOS\tWEIR_AND_COCKERHAM_FST\tFstNum\tFstDenom\ta\tb\tc" << endl;
 
 	entry *e = get_entry_object();
 	vector<char> variant_line;
@@ -3477,7 +3477,7 @@ void variant_file::output_windowed_weir_and_cockerham_fst(const parameters &para
 		buf = cout.rdbuf();
 
 	ostream out(buf);
-	out << "CHROM\tBIN_START\tBIN_END\tN_VARIANTS\tWEIGHTED_FST\tMEAN_FST\tsum1\tsum2" << endl;
+	out << "CHROM\tBIN_START\tBIN_END\tN_VARIANTS\tWEIGHTED_FST\tMEAN_FST\tsum1\tsum2\ta\tb\tc" << endl;
 	for (unsigned int ui=0; ui<chrs.size(); ui++)
 	{
 		CHROM = chrs[ui];

@@ -3230,6 +3230,8 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 		vector<double> c(N_alleles, 0.0);
 		double r = double(N_pops);
 		double sum_a = 0.0;
+		double sum_b = 0.0;
+		double sum_c = 0.0;
 		double sum_all = 0.0;
 
 		for(unsigned int j=0; j<N_alleles; j++)
@@ -3242,6 +3244,8 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 			if ((!isnan(a[j])) && (!isnan(b[j])) && (!isnan(c[j])))
 			{
 				sum_a += a[j];
+				sum_b += b[j];
+				sum_c += c[j];
 				sum_all += (a[j]+b[j]+c[j]);
 			}
 		}
@@ -3253,7 +3257,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 			sum3 += fst;
 			count++;
 		}
-		out << e->get_CHROM() << "\t" << e->get_POS() << "\t" << fst << "\t" << sum_a << "\t" << sum_all << endl;
+		out << e->get_CHROM() << "\t" << e->get_POS() << "\t" << fst << "\t" << sum_a << "\t" << sum_b << "\t" << sum_c << "\t" << sum_all << endl;
 	}
 
 	double weighted_Fst = sum1 / sum2;

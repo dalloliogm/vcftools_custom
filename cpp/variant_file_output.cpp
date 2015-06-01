@@ -3156,7 +3156,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 	double sum1=0.0, sum2 = 0.0;
 	double sum3=0.0, count = 0.0;
 
-	while(!eof())
+	while(!eof())  // Loop over each locus
 	{
 		get_entry(variant_line);
 		e->reset(variant_line);
@@ -3189,7 +3189,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 		double sum_nsqr = 0.0;
 		double n_sum = 0.0;
 
-		for (unsigned int i=0; i<N_pops; i++)
+		for (unsigned int i=0; i<N_pops; i++)   // Count N_hom and N_het per population
 		{
 			e->get_multiple_genotype_counts(indvs_in_pops[i], e->include_genotype, N_hom, N_het);
 

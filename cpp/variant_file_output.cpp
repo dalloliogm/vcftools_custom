@@ -3257,7 +3257,7 @@ void variant_file::output_weir_and_cockerham_fst(const parameters &params)
 			sum3 += fst;
 			count++;
 		}
-		out << e->get_CHROM() << "\t" << e->get_POS() << "\t" << fst << "\t" << sum_a << "\t" << sum_all << "\t" << sum_b << "\t" << sum_c << "\t" << sum_all << endl;
+		out << e->get_CHROM() << "\t" << e->get_POS() << "\t" << fst << "\t" << sum_a << "\t" << sum_all << "\t" << sum_b << "\t" << sum_c << endl;
 	}
 
 	double weighted_Fst = sum1 / sum2;
